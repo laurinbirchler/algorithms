@@ -14,10 +14,10 @@ class BidirectionalBubbleSortTest {
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("argumentProvider")
-    public void testSort(int[] array, int[] expected, String message) {
+    public void testSort(Integer[] array, Integer[] expected, String message) {
 
-        bidirectionalBubbleSort.sort(array);
-        assertArrayEquals(expected, array);
+        var sortedArray = bidirectionalBubbleSort.sort(array);
+        assertArrayEquals(expected, sortedArray);
     }
 
     private static Stream<Arguments> argumentProvider() {

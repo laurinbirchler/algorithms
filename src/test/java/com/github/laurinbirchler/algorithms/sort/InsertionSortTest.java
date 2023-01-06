@@ -17,10 +17,18 @@ class InsertionSortTest {
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("argumentProvider")
-    public void testSort(int[] array, int[] expected, String message) {
+    public void testSortGeneric(Integer[] array, Integer[] expected, String message) {
 
-        insertionSort.sort(array);
-        assertArrayEquals(expected, array);
+        var sortedArray = insertionSort.sort(array);
+        assertArrayEquals(expected, sortedArray);
+    }
+
+    @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
+    @MethodSource("argumentProvider")
+    public void testSortPrimitive(int[] array, int[] expected, String message) {
+
+        var sortedArray = insertionSort.sort(array);
+        assertArrayEquals(expected, sortedArray);
     }
 
     private static Stream<Arguments> argumentProvider() {

@@ -21,14 +21,6 @@ public class BubbleSortTest {
         assertArrayEquals(expected, sortedArray);
     }
 
-    @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
-    @MethodSource("argumentProvider")
-    public void testSort_optimized(Integer[] array, Integer[] expected, String message) {
-
-        var sortedArray = bubbleSort.sort_optimized(array);
-        assertArrayEquals(expected, sortedArray);
-    }
-
     private static Stream<Arguments> argumentProvider() {
 
         return Stream.of(

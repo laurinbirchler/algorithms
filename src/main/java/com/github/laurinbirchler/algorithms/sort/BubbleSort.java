@@ -13,53 +13,44 @@ public class BubbleSort implements SortingAlgorithm {
     @Override
     public <T extends Comparable<T>> T[] sort(T[] arr) {
 
-        int n = arr.length;
+        int length = arr.length;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1].compareTo(arr[j]) > 0) {
-                    // swap elements
-                    T temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
+        // Iterate through the array, swapping adjacent elements if they are in the wrong order
+        for (int i = 0; i < length - 1; i++) {
+            // The last i elements are already in their correct positions
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    // Swap the elements
+                    T temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
 
+        // Return the sorted array
         return arr;
     }
 
+    @Override
+    public int[] sort(int[] arr) {
 
-    /**
-     * Sorts the elements in the specified array in ascending order. However, some optimizations have been made.
-     * One optimization is to track whether any swaps have been made in the inner loop. If no swaps are made, then
-     * the array must already be sorted, and we can exit the outer loop early.
-     *
-     * @param arr the array to sort
-     */
-    public <T extends Comparable<T>> T[] sort_optimized(T[] arr) {
-        int n = arr.length;
+        int length = arr.length;
 
-        for (int i = 0; i < n; i++) {
-            boolean swapped = false;
-
-            for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1].compareTo(arr[j]) > 0) {
-                    // swap elements
-                    T temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
-                    swapped = true;
+        // Iterate through the array, swapping adjacent elements if they are in the wrong order
+        for (int i = 0; i < length - 1; i++) {
+            // The last i elements are already in their correct positions
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap the elements
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
-            }
-
-            if (!swapped) {
-                // array is already sorted, so exit early
-                return arr;
             }
         }
 
+        // Return the sorted array
         return arr;
     }
-
 }
