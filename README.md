@@ -13,3 +13,5 @@
 | Diffie-Hellman Key Exchange | BinarySearch | Bidirectional BubbleSort |
 |                             |              | BubbleSort               |
 |                             |              | CombSort                 |   
+|                             |              | InsertionSort            |       
+|                             |              | ShellSort                |
