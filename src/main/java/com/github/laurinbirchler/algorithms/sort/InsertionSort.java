@@ -3,10 +3,11 @@ package com.github.laurinbirchler.algorithms.sort;
 /**
  * Implementation of the Insertion Sort algorithm for sorting arrays of integers.
  * <p>
- * It is a variant of bubble sort and works by repeatedly iterating over the elements of the list and
- * swapping adjacent elements that are out of order. The key difference between comb sort and bubble
- * sort is that comb sort uses a gap between the elements that are compared, whereas bubble sort
- * always compares adjacent elements.
+ * Insertion sort is an efficient algorithm for sorting a small number of elements. It works by iterating through
+ * the elements of an array, and inserting each element into its proper position in the array, relative to
+ * the other elements. The algorithm has a time complexity of O(n^2) and is <b>not suitable for sorting large lists</b>,
+ * but it is fast and simple to implement, and is often used as a simple sorting algorithm in introductory
+ * computer science courses.
  *
  * @author Laurin Birchler
  * @version 1.0
