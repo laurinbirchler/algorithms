@@ -1,6 +1,5 @@
 package com.github.laurinbirchler.algorithms.sort;
 
 public interface SortingAlgorithm {
-     void sort(int[] array);
-
+     <T extends Comparable<T>> T[] sort(T[] unsorted);
 }

@@ -15,18 +15,18 @@ public class BubbleSortTest {
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("argumentProvider")
-    public void testSort(int[] array, int[] expected, String message) {
+    public void testSort(Integer[] array, Integer[] expected, String message) {
 
-        bubbleSort.sort(array);
-        assertArrayEquals(expected, array);
+        var sortedArray = bubbleSort.sort(array);
+        assertArrayEquals(expected, sortedArray);
     }
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("argumentProvider")
-    public void testSort_optimized(int[] array, int[] expected, String message) {
+    public void testSort_optimized(Integer[] array, Integer[] expected, String message) {
 
-        bubbleSort.sort_optimized(array);
-        assertArrayEquals(expected, array);
+        var sortedArray = bubbleSort.sort_optimized(array);
+        assertArrayEquals(expected, sortedArray);
     }
 
     private static Stream<Arguments> argumentProvider() {

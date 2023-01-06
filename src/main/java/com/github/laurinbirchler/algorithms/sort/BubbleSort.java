@@ -10,29 +10,25 @@ package com.github.laurinbirchler.algorithms.sort;
  */
 public class BubbleSort implements SortingAlgorithm {
 
-    /**
-     * Sorts the elements in the specified array in ascending order.
-     *
-     * @param arr the array to sort
-     */
     @Override
-    public void sort(int[] arr) {
+    public <T extends Comparable<T>> T[] sort(T[] arr) {
 
         int n = arr.length;
-        int temp;
 
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1] > arr[j]) {
-
+                if (arr[j - 1].compareTo(arr[j]) > 0) {
                     // swap elements
-                    temp = arr[j - 1];
+                    T temp = arr[j - 1];
                     arr[j - 1] = arr[j];
                     arr[j] = temp;
                 }
             }
         }
+
+        return arr;
     }
+
 
     /**
      * Sorts the elements in the specified array in ascending order. However, some optimizations have been made.
@@ -41,19 +37,16 @@ public class BubbleSort implements SortingAlgorithm {
      *
      * @param arr the array to sort
      */
-    public void sort_optimized(int[] arr) {
-
+    public <T extends Comparable<T>> T[] sort_optimized(T[] arr) {
         int n = arr.length;
-        int temp;
 
         for (int i = 0; i < n; i++) {
             boolean swapped = false;
 
             for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1] > arr[j]) {
-
+                if (arr[j - 1].compareTo(arr[j]) > 0) {
                     // swap elements
-                    temp = arr[j - 1];
+                    T temp = arr[j - 1];
                     arr[j - 1] = arr[j];
                     arr[j] = temp;
                     swapped = true;
@@ -61,10 +54,12 @@ public class BubbleSort implements SortingAlgorithm {
             }
 
             if (!swapped) {
-
                 // array is already sorted, so exit early
-                break;
+                return arr;
             }
         }
+
+        return arr;
     }
+
 }
