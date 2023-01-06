@@ -14,4 +14,3 @@
 |                             |              | BubbleSort               |
 |                             |              | CombSort                 |   
 |                             |              | InsertionSort            |       
-|                             |              | ShellSort                |
