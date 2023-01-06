@@ -11,11 +11,19 @@ import java.util.stream.Stream;
 
 public class BubbleSortTest {
 
-    BubbleSort bubbleSort = new BubbleSort();
+    SortingAlgorithm bubbleSort = new BubbleSort();
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("argumentProvider")
-    public void testSort(Integer[] array, Integer[] expected, String message) {
+    public void testSortGeneric(Integer[] array, Integer[] expected, String message) {
+
+        var sortedArray = bubbleSort.sort(array);
+        assertArrayEquals(expected, sortedArray);
+    }
+
+    @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
+    @MethodSource("argumentProvider")
+    public void testSortPrimitive(int[] array, int[] expected, String message) {
 
         var sortedArray = bubbleSort.sort(array);
         assertArrayEquals(expected, sortedArray);

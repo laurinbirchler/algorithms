@@ -1,5 +1,7 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Implementation of the Insertion Sort algorithm for sorting arrays of integers.
  * <p>
@@ -16,7 +18,7 @@ package com.github.laurinbirchler.algorithms.sort;
  */
 public class InsertionSort implements SortingAlgorithm {
     @Override
-    public int[] sort(int[] array) {
+    public int[] sort(int @NotNull [] array) {
         int length = array.length;
 
         for (int i = 0; i < length; ++i) {
@@ -36,7 +38,7 @@ public class InsertionSort implements SortingAlgorithm {
 
 
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
+    public <T extends Comparable<T>> T[] sort(T @NotNull [] array) {
 
         int length = array.length;
 
@@ -61,6 +63,4 @@ public class InsertionSort implements SortingAlgorithm {
         // Return the sorted array
         return array;
     }
-
-
 }

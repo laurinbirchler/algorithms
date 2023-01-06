@@ -1,5 +1,7 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * A class that provides a method for performing bubble sort on an array of integers.
  *
@@ -11,7 +13,7 @@ package com.github.laurinbirchler.algorithms.sort;
 public class BubbleSort implements SortingAlgorithm {
 
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] arr) {
+    public <T extends Comparable<T>> T[] sort(T @NotNull [] arr) {
 
         int length = arr.length;
 
@@ -33,13 +35,14 @@ public class BubbleSort implements SortingAlgorithm {
     }
 
     @Override
-    public int[] sort(int[] arr) {
+    public int[] sort(int @NotNull [] arr) {
 
         int length = arr.length;
 
         // Iterate through the array, swapping adjacent elements if they are in the wrong order
         for (int i = 0; i < length - 1; i++) {
             // The last i elements are already in their correct positions
+            // Iterate through the array, swapping adjacent elements if they are in the wrong order
             for (int j = 0; j < length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     // Swap the elements

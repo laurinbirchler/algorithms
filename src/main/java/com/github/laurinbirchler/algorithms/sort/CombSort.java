@@ -1,5 +1,7 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Comb sort is a sorting algorithm that is used to sort a list of items in ascending or descending order.
  * <p>
@@ -14,9 +16,9 @@ package com.github.laurinbirchler.algorithms.sort;
  * @since 1.0
  */
 public class CombSort implements SortingAlgorithm {
-    
+
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
+    public <T extends Comparable<T>> T[] sort(T @NotNull [] array) {
         final double SHRINK_FACTOR = 1.3;
 
         int gap = array.length;
@@ -46,7 +48,9 @@ public class CombSort implements SortingAlgorithm {
     }
 
     @Override
-    public int[] sort(int[] array) {
+    public int[] sort(int @NotNull [] array) {
+
+        // https://en.wikipedia.org/wiki/Comb_sort#Gap_sequences
         final double SHRINK_FACTOR = 1.3;
 
         int gap = array.length;
