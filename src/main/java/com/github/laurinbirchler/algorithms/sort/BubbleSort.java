@@ -1,5 +1,7 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * A class that provides a method for performing bubble sort on an array of integers.
  *
@@ -10,61 +12,48 @@ package com.github.laurinbirchler.algorithms.sort;
  */
 public class BubbleSort implements SortingAlgorithm {
 
-    /**
-     * Sorts the elements in the specified array in ascending order.
-     *
-     * @param arr the array to sort
-     */
     @Override
-    public void sort(int[] arr) {
+    public <T extends Comparable<T>> T[] sort(T @NotNull [] arr) {
 
-        int n = arr.length;
-        int temp;
+        int length = arr.length;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1] > arr[j]) {
-
-                    // swap elements
-                    temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
+        // Iterate through the array, swapping adjacent elements if they are in the wrong order
+        for (int i = 0; i < length - 1; i++) {
+            // The last i elements are already in their correct positions
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    // Swap the elements
+                    T temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
+
+        // Return the sorted array
+        return arr;
     }
 
-    /**
-     * Sorts the elements in the specified array in ascending order. However, some optimizations have been made.
-     * One optimization is to track whether any swaps have been made in the inner loop. If no swaps are made, then
-     * the array must already be sorted, and we can exit the outer loop early.
-     *
-     * @param arr the array to sort
-     */
-    public void sort_optimized(int[] arr) {
+    @Override
+    public int[] sort(int @NotNull [] arr) {
 
-        int n = arr.length;
-        int temp;
+        int length = arr.length;
 
-        for (int i = 0; i < n; i++) {
-            boolean swapped = false;
-
-            for (int j = 1; j < (n - i); j++) {
-                if (arr[j - 1] > arr[j]) {
-
-                    // swap elements
-                    temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
-                    swapped = true;
+        // Iterate through the array, swapping adjacent elements if they are in the wrong order
+        for (int i = 0; i < length - 1; i++) {
+            // The last i elements are already in their correct positions
+            // Iterate through the array, swapping adjacent elements if they are in the wrong order
+            for (int j = 0; j < length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap the elements
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
-
-            if (!swapped) {
-
-                // array is already sorted, so exit early
-                break;
-            }
         }
+
+        // Return the sorted array
+        return arr;
     }
 }

@@ -1,5 +1,7 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Implementation of the Insertion Sort algorithm for sorting arrays of integers.
  * <p>
@@ -16,14 +18,10 @@ package com.github.laurinbirchler.algorithms.sort;
  */
 public class InsertionSort implements SortingAlgorithm {
     @Override
-    public void sort(int[] array) {
-
+    public int[] sort(int @NotNull [] array) {
         int length = array.length;
 
-        // Iterate through each element in the array
         for (int i = 0; i < length; ++i) {
-
-            // Save the current element as the "key"
             int key = array[i];
             int j = i - 1;
 
@@ -31,10 +29,38 @@ public class InsertionSort implements SortingAlgorithm {
                 array[j + 1] = array[j];
                 j = j - 1;
             }
+            if (array[j + 1] > key) {
+                array[j + 1] = key;
+            }
+        }
+        return array;
+    }
 
+
+    @Override
+    public <T extends Comparable<T>> T[] sort(T @NotNull [] array) {
+
+        int length = array.length;
+
+        for (int i = 0; i < length; ++i) {
+            // Save the current element as the "key"
+            T key = array[i];
+            // Initialize the second loop variable with the index of the previous element
+            int j = i - 1;
+
+            // Iterate through the sorted subarray to the left of the current element
+            // Shift all elements that are larger than the key to the right, until it finds the correct
+            // position for the key
+            while (j >= 0 && array[j].compareTo(key) > 0) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+
+            // Insert the key into its correct position
             array[j + 1] = key;
-
         }
 
+        // Return the sorted array
+        return array;
     }
 }
