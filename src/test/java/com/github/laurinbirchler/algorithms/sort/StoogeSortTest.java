@@ -1,5 +1,6 @@
 package com.github.laurinbirchler.algorithms.sort;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,15 +11,16 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-@DisplayName("Testing Bidirectional Bubblesort")
-class BidirectionalBubbleSortTest {
-    SortingAlgorithm bidirectionalBubbleSort = new BidirectionalBubbleSort();
+@DisplayName("Testing Stooge Sort")
+class StoogeSortTest {
+
+    SortingAlgorithm stoogeSort = new StoogeSort();
 
     @ParameterizedTest(name = "{index} --> Testing with {0} which is a {2}")
     @MethodSource("comparableArgumentProvider")
     public <T extends Comparable<T>> void testSortGeneric(T[] array, T[] expected, String message) {
 
-        var sortedArray = bidirectionalBubbleSort.sort(array);
+        var sortedArray = stoogeSort.sort(array);
         assertArrayEquals(expected, sortedArray);
     }
 
@@ -26,11 +28,11 @@ class BidirectionalBubbleSortTest {
     @MethodSource("primitiveArgumentProvider")
     public void testSortPrimitive(int[] array, int[] expected, String message) {
 
-        var sortedArray = bidirectionalBubbleSort.sort(array);
+        var sortedArray = stoogeSort.sort(array);
         assertArrayEquals(expected, sortedArray);
     }
 
-    private static Stream<Arguments> primitiveArgumentProvider() {
+    private static @NotNull Stream<Arguments> primitiveArgumentProvider() {
 
         return Stream.of(
                 arguments(new int[]{5, 1, 4, 2, 8}, new int[]{1, 2, 4, 5, 8}, "normal array"),
@@ -41,7 +43,7 @@ class BidirectionalBubbleSortTest {
         );
     }
 
-    private static Stream<Arguments> comparableArgumentProvider() {
+    private static @NotNull Stream<Arguments> comparableArgumentProvider() {
 
         return Stream.of(
                 arguments(new Double[]{5.2, 2.4, 4.3, 3.8, 1.34}, new Double[]{1.34, 2.4, 3.8, 4.3, 5.2}, "array of Double Objects"),
